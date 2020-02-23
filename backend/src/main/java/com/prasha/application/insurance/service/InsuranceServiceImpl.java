@@ -91,9 +91,9 @@ public class InsuranceServiceImpl implements InsuranceService {
       log.info(String.format("Result of calcInsurance: %s", result.toString()));
       String modelName = "";
       if (resultNode.has("modelName")) {
-         modelName = resultNode.get("modelName").toString();
+         modelName = resultNode.get("modelName").textValue();
       }
-      String deviceType = resultNode.get("deviceType").toString();
+      String deviceType = resultNode.get("deviceType").textValue();
       Long devicePrice = 0L;
       if (this.devicePriceMap.containsKey(modelName)) {
         devicePrice = this.devicePriceMap.get(modelName);
@@ -101,9 +101,9 @@ public class InsuranceServiceImpl implements InsuranceService {
 
       double premiumCost = 0.0;
       if (deviceType.equals("ELECTRONICS")) {
-         premiumCost = (devicePrice * .5) * getAgePremium(resultNode.get("activationDate").asLong());
+         premiumCost = (devicePrice * 0.5) * getAgePremium(resultNode.get("activationDate").asLong());
       } else if (deviceType.equals("AUTOMOBILE")) {
-         premiumCost = (devicePrice * .5) * getAgePremium(resultNode.get("activationDate").asLong());
+         premiumCost = (devicePrice * 0.5) * getAgePremium(resultNode.get("activationDate").asLong());
       }
       resultNode.put(ID, result.get(ID).textValue());
       resultNode.put("previousPrice", devicePrice);
@@ -155,3 +155,4 @@ public class InsuranceServiceImpl implements InsuranceService {
       return null;
    }
 }
+

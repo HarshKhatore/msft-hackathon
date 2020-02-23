@@ -1,0 +1,16 @@
+.Device {
+    width: 100%;
+    background-color: #CF8F2E;
+    padding: 10px 0;
+    text-align: center;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.Device:hover,
+.Device:active {
+    background-color: #C0DDF5;
+}
